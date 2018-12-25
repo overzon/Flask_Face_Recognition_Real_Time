@@ -1,0 +1,98 @@
+<!-- <html>
+  <head>
+    <title>Video Streaming Demonstration</title>
+    <style type="text/css">
+    .show{display:block;}
+    .hide{display:none;}
+    </style>
+    <script type="text/javascript">
+    function showImg()
+    {
+    var obj=document.getElementById('face1');
+    obj.className = 'show';
+    }
+    function classImg()
+    {
+    var obj=document.getElementById('face1');
+    obj.className = 'hide';
+    }
+    </script>
+  </head>
+  <body>
+    <h1>Video Streaming Demonstration</h1> -->
+    <!-- <form action="#" method="post"> -->
+      <!-- <img src="{{ url_for('calc') }}" class="hide" id=face1>
+      <button name="forwardBtn" onclick="showImg()">Open</button>
+      <button name="forwardBtn" onclick="classImg()">Class</button> -->
+    <!-- </form> -->
+  	<!-- <h1>{{ url_for('calc') }}</h1> -->
+  <!-- </body>
+</html> -->
+
+<html>
+  <head>
+    <title>Video Streaming Demonstration</title>
+    <style type="text/css">
+    .show{display:block;}
+    .hide{display:none;}
+    </style>
+    <script type="text/javascript">
+    function showImg()
+    {
+    var obj=document.getElementById('face1');
+    obj.className = 'show';
+    var obj1=document.getElementById('face2');
+    obj1.className = 'show';
+    }
+    function closeImg()
+    {
+    var obj=document.getElementById('face1');
+    obj.className = 'hide';
+    var obj1=document.getElementById('face2');
+    obj1.className = 'hide';
+    }
+    </script>
+  </head>
+  <body>
+    <h1>Video Streaming Demonstration</h1>
+    <!-- <form action="#" method="post"> -->
+      <img src="" class="show" id=face1>
+      <!-- <br> -->
+      <img src="" class="show" id=face2>
+      <button name="forwardBtn" id="open"onclick="showImg();openimage();openimage1()">Open</button>
+      <button name="forwardBtn" id="close" onclick="closeImg();closeimage()">Close</button>
+      <button name="forwardBtn" id="crop" onclick="cp()">CP</button>
+      <!-- <img src"" class="show" id=face3> -->
+    <!-- </form> -->
+  	<!-- <h1>{{ url_for('calc') }}</h1> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#crop").click(function(){
+            $.get("{{ url_for('image') }}", function(data, status){
+                // alert("Data: " + data + "\nStatus: " + status);
+                alert("Crop Image = Status: " + status);
+            });
+        });
+    });
+    </script>
+    <script >
+    var image = document.getElementById("face1");
+    function openimage()
+    {
+      image.src = "{{ url_for('calc') }}";
+    }
+
+    var image1 = document.getElementById("face2");
+    function openimage1()
+    {
+      image1.src = "{{ url_for('ip_camera') }}";
+    }
+    function closeimage()
+    {
+      image.src = "{{ url_for('stop') }}";
+      image1.src = "{{ url_for('stop') }}";
+    }
+    </script>
+  </body>
+</html>
